@@ -32,7 +32,7 @@ int main()
     int banderaAlta;
 
     banderaGuardarDeDatosTxt=0;
-    banderaGuardarDeDatosBin=1;
+    banderaGuardarDeDatosBin=0;
     banderaCargarDeDatosTxt=1;
     banderaCargarDeDatosBin=1;
     banderaAlta=1;
@@ -43,14 +43,14 @@ int main()
 	{
 		printf("\t**********************BIENVENIDO A LA APP UTN LINKEDLIST**********************\n\n");
 		printf("1- Cargar los datos de los pasajeros desde el archivo data.csv (modo texto).\n"
-			   "2- Cargar los datos de los pasajeros desde el archivo data.csv (modo binario).\n"
+			   "2- Cargar los datos de los pasajeros desde el archivo data.bin (modo binario).\n"
 			   "3- Alta de pasajero\n"
 			   "4- Modificar datos de pasajero\n"
 			   "5- Baja de pasajero\n"
 			   "6- Listar pasajero\n"
 			   "7- Ordenar pasajero\n"
 			   "8- Guardar los datos de los pasajeros en el archivo data.csv (modo texto)\n"
-			   "9- Guardar los datos de los pasajeros en el archivo data.csv (modo binario)\n"
+			   "9- Guardar los datos de los pasajeros en el archivo data.bin (modo binario)\n"
 			   "10- SALIR \n\n");
 		if(utn_getNumeroEntero(&opcionIngresada, "Ingrese una opcion: ", "ERROR. OPCION INVALIDA. ", 1, 10, 3)==0)
 		{

@@ -32,10 +32,9 @@ int controller_loadFromText(char* path, LinkedList* pArrayListPassenger)
 int controller_loadFromBinary(char* path , LinkedList* pArrayListPassenger)
 {
 	int retorno;
-	FILE* pArchivo;
+	FILE* pArchivo=NULL;
 	if(path!=NULL && pArrayListPassenger!=NULL)
 	{
-		pArchivo=fopen(path, "rb");
 		retorno=parser_PassengerFromBinary(pArchivo, pArrayListPassenger, path);
 	}
 	return retorno;

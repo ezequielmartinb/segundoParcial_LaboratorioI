@@ -84,7 +84,7 @@ int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger, ch
 	{
 		do
 		{
-			cantidad=fread(&auxiliarPasajeros,sizeof(Passenger),1,pFile);
+			cantidad=fread(auxiliarPasajeros,sizeof(Passenger),1,pFile);
 			auxiliarPasajeros=Passenger_new();
 
 			if(cantidad==1 && auxiliarPasajeros!=NULL)
