@@ -97,7 +97,7 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
  */
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
-    int retorno = -1;
+    int retorno=-1;
     int len;
     Node* pNuevoNodo=NULL;
     Node* pAuxiliarNodo=NULL; // NODO ANTERIOR
@@ -106,15 +106,15 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 
     if(this!=NULL && nodeIndex>=0 && nodeIndex<=len)
     {
-    	pNuevoNodo = (Node*)malloc(sizeof(Node));
+    	pNuevoNodo=(Node*)malloc(sizeof(Node));
 		if(pNuevoNodo!=NULL)
 		{
 			if(nodeIndex==0)
 			{
 				pNuevoNodo->pNextNode=this->pFirstNode;
 				this->pFirstNode=pNuevoNodo;
-				this->size++;
 				pNuevoNodo->pElement=pElement;
+				this->size++;
 				retorno=0;
 			}
 			else
@@ -124,8 +124,8 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 				{
 					pNuevoNodo->pNextNode=pAuxiliarNodo->pNextNode;
 					pAuxiliarNodo->pNextNode=pNuevoNodo;
-					this->size++;
 					pNuevoNodo->pElement=pElement;
+					this->size++;
 					retorno=0;
 				}
 			}
@@ -246,8 +246,8 @@ int ll_remove(LinkedList* this,int index)
 {
     int retorno=-1;
     int len;
-	Node* pAuxiliarNodo=NULL; // NODO ANTERIOR
-	Node* pAuxiliarNodoAnterior=NULL;
+	Node* pAuxiliarNodo=NULL;
+	Node* pAuxiliarNodoAnterior=NULL; // NODO ANTERIOR
 
 	len=ll_len(this);
 
@@ -568,8 +568,8 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     int retorno=-1;
     int len;
     int estaOrdenado;
-    void* auxiliarElemento=NULL;
-    void* auxiliarElemento2=NULL;
+    void* auxiliarUnElemento=NULL;
+    void* auxiliarOtroElemento=NULL;
 
     if(this!=NULL && (order==0 || order==1) && pFunc!=NULL)
     {
@@ -580,12 +580,12 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     		len--;
     		for(int i=0;i<len;i++)
     		{
-    			auxiliarElemento=ll_get(this, i);
-    			auxiliarElemento2=ll_get(this, i+1);
-    			if((pFunc(auxiliarElemento, auxiliarElemento2)>0 && order==1) || (pFunc(auxiliarElemento, auxiliarElemento2)<0 && order==0))
+    			auxiliarUnElemento=ll_get(this, i);
+    			auxiliarOtroElemento=ll_get(this, i+1);
+    			if((pFunc(auxiliarUnElemento, auxiliarOtroElemento)>0 && order==1) || (pFunc(auxiliarUnElemento, auxiliarOtroElemento)<0 && order==0))
     			{
-    				ll_set(this, i, auxiliarElemento2);
-    				ll_set(this, i+1, auxiliarElemento);
+    				ll_set(this, i, auxiliarOtroElemento);
+    				ll_set(this, i+1, auxiliarUnElemento);
     				estaOrdenado=0;
     			}
     		}
