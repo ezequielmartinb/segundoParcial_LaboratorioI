@@ -413,4 +413,34 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 	}
 	return retorno;
 }
+// INFORMES
+int controller_PassengerByClass(LinkedList* pArrayListPassenger, int* cantidadPasajerosFirstClass, int* cantidadPasajerosExecutive, int* cantidadPasajerosEconomyClass)
+{
+	int retorno=-1;
 
+	if(pArrayListPassenger!=NULL)
+	{
+		*cantidadPasajerosFirstClass=ll_count(pArrayListPassenger, Passenger_contarPasajerosFirstClass);
+		*cantidadPasajerosExecutive=ll_count(pArrayListPassenger, Passenger_contarPasajerosExecutive);
+		*cantidadPasajerosEconomyClass=ll_count(pArrayListPassenger, Passenger_contarPasajerosEconomyClass);
+		retorno=0;
+	}
+
+	return retorno;
+}
+int controller_filtrerPassengerByClass(LinkedList* pArrayListPassenger)
+{
+	int retorno=-1;
+	LinkedList* nuevaLinkedList=NULL;
+
+	if(pArrayListPassenger!=NULL)
+	{
+		nuevaLinkedList=ll_filter(pArrayListPassenger, Passenger_filtrarPorPasajeroFirstClass);
+		if(nuevaLinkedList!=NULL && controller_saveAsText("filtros.csv", nuevaLinkedList)==0)
+		{
+			retorno=0;
+		}
+	}
+
+	return retorno;
+}

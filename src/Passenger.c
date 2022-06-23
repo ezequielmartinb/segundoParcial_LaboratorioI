@@ -595,3 +595,146 @@ int Passenger_compareByEstadoVuelo(void* unPasajero, void* otroPasajero)
 	return retorno;
 }
 
+/*
+ *  * 		1. 	Pasajeros por clase: Se deberá informar la cantidad de pasajeros por clase.
+ *
+ * 			Para ello se deberá agregar la función “ll_count()”, la cual permitirá contar elementos de la lista bajo algún
+			criterio
+
+			Se deberá iterar todos los elementos de la lista y pasárselos a la funcion “fn”.
+ *
+ * 			La función “fn” devolverá la cantidad que debe contarse.
+ */
+int Passenger_contarPasajerosFirstClass(void* element)
+{
+	int retorno;
+	char auxiliarTipoPasajero[50];
+
+
+	if(element!=NULL)
+	{
+		Passenger_getTipoPasajero((Passenger*)element, auxiliarTipoPasajero);
+		if(strcmp(auxiliarTipoPasajero,"FirstClass")==0)
+		{
+			retorno=1;
+		}
+	}
+	return retorno;
+}
+int Passenger_contarPasajerosExecutive(void* element)
+{
+	int retorno=-1;
+	char auxiliarTipoPasajero[50];
+
+	if(element!=NULL)
+	{
+		Passenger_getTipoPasajero((Passenger*)element, auxiliarTipoPasajero);
+		if(strcmp(auxiliarTipoPasajero,"Executive")==0)
+		{
+			retorno=1;
+		}
+	}
+	return retorno;
+}
+int Passenger_contarPasajerosEconomyClass(void* element)
+{
+	int retorno=-1;
+	char auxiliarTipoPasajero[50];
+
+	if(element!=NULL)
+	{
+		Passenger_getTipoPasajero((Passenger*)element, auxiliarTipoPasajero);
+		if(strcmp(auxiliarTipoPasajero,"EconomyClass")==0)
+		{
+			retorno=1;
+		}
+	}
+	return retorno;
+}
+/*
+ * 2.  	Generar archivo de vuelos: se solicitará al usuario que ingrese un TIPO DE PASAJERO y se
+		generará otro archivo con el mismo formato que el original, pero sólo con los pasajeros de
+		ese vuelo.
+
+		Para realizar este punto se deberá desarrollar la función “ll_filter()”, la cual
+		permitirá filtrar elementos de una lista bajo algún criterio.
+ */
+
+int Passenger_filtrarPorPasajeroFirstClass(void* element)
+{
+	int retorno=-1;
+	char auxiliarTipoPasajero[50];
+
+	if(element!=NULL)
+	{
+		Passenger_getTipoPasajero((Passenger*)element, auxiliarTipoPasajero);
+		if(strcmp(auxiliarTipoPasajero,"FirstClass")==0)
+		{
+			retorno=0;
+		}
+	}
+	return retorno;
+}
+int Passenger_filtrarPorPasajeroEconomyClass(void* element)
+{
+	int retorno=-1;
+	char auxiliarTipoPasajero[50];
+
+	if(element!=NULL)
+	{
+		Passenger_getTipoPasajero((Passenger*)element, auxiliarTipoPasajero);
+		if(strcmp(auxiliarTipoPasajero,"EconomyClass")==0)
+		{
+			retorno=0;
+		}
+	}
+	return retorno;
+}
+int Passenger_filtrarPorPasajeroExecutive(void* element)
+{
+	int retorno=-1;
+	char auxiliarTipoPasajero[50];
+
+	if(element!=NULL)
+	{
+		Passenger_getTipoPasajero((Passenger*)element, auxiliarTipoPasajero);
+		if(strcmp(auxiliarTipoPasajero,"Executive")==0)
+		{
+			retorno=0;
+		}
+	}
+	return retorno;
+}
+
+/*
+ * 3. Calcular millas acumuladas: se deberá informar el listado de pasajeros con una columna
+	   extra que indicará las millas que se acumularon con ese vuelo según el siguiente criterio:
+
+			1-Cada $100 se suma 1 milla.
+			2-Si el pasajero es de primera clase, duplica las millas acumuladas
+			3-Si el pasajero es de clase ejecutiva, triplica las millas acumuladas
+
+		Para el desarrollo de este punto se deberá crear la función “ll_map()”, que permitirá calcular
+		el campo millas.
+ */
+/*void Passenger_calcularMillas(void* element)
+{
+	float auxiliarPrecio;
+	char auxiliarTipoPasajero[50];
+	float cantidadMillas=-1;
+	if(element!=NULL && Passenger_getPrecio((Passenger*) element, &auxiliarPrecio)==0 && Passenger_getTipoPasajero((Passenger*)element, auxiliarTipoPasajero)==0)
+	{
+		if(strcmp(auxiliarTipoPasajero,"FirstClass")==0)
+		{
+			cantidadMillas=(auxiliarPrecio/100)*2;
+		}
+		else if(strcmp(auxiliarTipoPasajero,"Executive")==0)
+		{
+			cantidadMillas=(auxiliarPrecio/100)*3;
+		}
+		else
+		{
+			cantidadMillas=(auxiliarPrecio/100)*1;
+		}
+	}
+}*/

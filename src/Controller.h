@@ -8,3 +8,6 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger);
 int controller_saveAsText(char* path , LinkedList* pArrayListPassenger);
 int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger);
 int controller_lastID(LinkedList* pArrayListPassenger);
+// INFORMES
+int controller_PassengerByClass(LinkedList* pArrayListPassenger, int* cantidadPasajerosFirstClass, int* cantidadPasajerosExecutive, int* cantidadPasajerosEconomyClass);
+int controller_filtrerPassengerByClass(LinkedList* pArrayListPassenger);

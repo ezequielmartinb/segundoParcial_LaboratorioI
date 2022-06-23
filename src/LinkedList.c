@@ -597,3 +597,124 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 
 }
 
+// INFORMES
+/** \
+ * 		1. 	Pasajeros por clase: Se deberá informar la cantidad de pasajeros por clase.
+ *
+ * 			Para ello se deberá agregar la función “ll_count()”, la cual permitirá contar elementos de la lista bajo algún
+			criterio
+ *
+ * 		La función “ll_count” recibirá una lista y una función “fn”.
+ *
+ * 		Se deberá iterar todos los elementos de la lista y pasárselos a la funcion “fn”.
+ *
+ * 		La función “fn” devolverá la cantidad que debe contarse.
+ *
+ * 		La función “ll_count” almacenará un acumulador al cual sumará el valor de retorno de “fn” en cada iteración.
+
+		Al finalizar las iteraciones, la función “ll_count” devolverá el valor
+		acumulado
+ */
+int ll_count(LinkedList* this, int (*fn)(void* element))
+{
+	int acumuladorCantidadTipoPasajeros;
+	int len;
+    void* auxiliarElemento=NULL;
+    int retornoFn;
+    acumuladorCantidadTipoPasajeros=0;
+
+	if(this!=NULL && fn!=NULL)
+	{
+		len=ll_len(this);
+		for(int i=0;i<len;i++)
+		{
+			auxiliarElemento=ll_get(this, i);
+			retornoFn=fn(auxiliarElemento);
+			acumuladorCantidadTipoPasajeros=acumuladorCantidadTipoPasajeros+retornoFn;
+		}
+	}
+
+	return acumuladorCantidadTipoPasajeros;
+}
+/*
+ * 	2.  Generar archivo de vuelos: se solicitará al usuario que ingrese un TIPO DE PASAJERO y se
+		generará otro archivo con el mismo formato que el original, pero sólo con los pasajeros de
+		ese vuelo. Para realizar este punto se deberá desarrollar la función “ll_filter()”, la cual
+		permitirá filtrar elementos de una lista bajo algún criterio.
+ *
+ *
+ * 	La función “ll_filter” recibirá una lista y una función “fn”.
+ *
+ * 	Se deberá iterar todos los elementos de la lista y pasárselos a la función “fn”.
+ *
+ * 	La función “fn” analizará el elemento recibido e informará si cumple o no con el criterio establecido.
+ *
+ * 	Al finalizar la iteración, la nueva lista estará conformada sólo por los elementos que corresponden.
+ */
+LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element))
+{
+	LinkedList* auxiliarLista;
+    void* auxiliarElemento=NULL;
+    int retornoFn;
+	int len;
+
+	if(this!=NULL && fn!=NULL)
+	{
+		len=ll_len(this);
+		auxiliarLista=ll_newLinkedList();
+		if(auxiliarLista!=NULL)
+		{
+			for(int i=0;i<len;i++)
+			{
+				auxiliarElemento=ll_get(this, i);
+				retornoFn=fn(auxiliarElemento);
+				if(retornoFn==0)
+				{
+					ll_add(auxiliarLista, auxiliarElemento);
+				}
+			}
+		}
+	}
+	return auxiliarLista;
+}
+/*
+		3. Calcular millas acumuladas: se deberá informar el listado de pasajeros con una columna
+		   extra que indicará las millas que se acumularon con ese vuelo según el siguiente criterio:
+
+				1-Cada $100 se suma 1 milla.
+				2-Si el pasajero es de primera clase, duplica las millas acumuladas
+				3-Si el pasajero es de clase ejecutiva, triplica las millas acumuladas
+
+			Para el desarrollo de este punto se deberá crear la función “ll_map()”, que permitirá calcular
+			el campo millas.
+
+
+			La función “ll_map” recibirá una lista y una función “fn”.
+
+			Se deberá iterar todos los elementos de la lista y pasárselos a la función “fn”.
+
+			La función “fn” podrá realizar un cálculo con el elemento recibido y modificar alguno de sus campos si es necesario.
+
+			Al finalizar la iteración, los elementos de la lista quedarán modificados.
+
+
+ */
+LinkedList* ll_map(LinkedList* this, void (*fn)(void* element))
+{
+	LinkedList* auxiliarLista=NULL;
+    void* auxiliarElemento=NULL;
+	int len;
+
+	if(this!=NULL && fn!=NULL)
+	{
+		len=ll_len(this);
+		for(int i=0;i<len;i++)
+		{
+			auxiliarElemento=ll_get(this, i);
+			fn(auxiliarElemento);
+			ll_add(auxiliarLista, auxiliarElemento);
+		}
+	}
+
+	return auxiliarLista;
+}

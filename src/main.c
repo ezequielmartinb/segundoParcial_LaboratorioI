@@ -30,6 +30,10 @@ int main()
     int banderaCargarDeDatosTxt;
     int banderaCargarDeDatosBin;
     int banderaAlta;
+    int cantidadPasajerosFirstClass;
+    int cantidadPasajerosExecutive;
+    int cantidadPasajerosEconomyClass;
+
 
     banderaGuardarDeDatosTxt=0;
     banderaGuardarDeDatosBin=0;
@@ -39,7 +43,7 @@ int main()
 
     setbuf(stdout, NULL);
 
-    while(opcionIngresada!=10)
+    while(opcionIngresada!=11)
 	{
 		printf("\t**********************BIENVENIDO A LA APP UTN LINKEDLIST**********************\n\n");
 		printf("1- Cargar los datos de los pasajeros desde el archivo data.csv (modo texto).\n"
@@ -51,7 +55,11 @@ int main()
 			   "7- Ordenar pasajero\n"
 			   "8- Guardar los datos de los pasajeros en el archivo data.csv (modo texto)\n"
 			   "9- Guardar los datos de los pasajeros en el archivo data.bin (modo binario)\n"
-			   "10- SALIR \n\n");
+			   "10-Informes"
+			   "	1-Pasajeros por clase\n"
+			   "	2-Generar archivo de vuelos\n"
+			   "	3-Calcular millas acumuladas\n"
+			   "11- SALIR \n\n");
 		if(utn_getNumeroEntero(&opcionIngresada, "Ingrese una opcion: ", "ERROR. OPCION INVALIDA. ", 1, 10, 3)==0)
 		{
 			switch(opcionIngresada)
@@ -179,6 +187,18 @@ int main()
 					}
 					break;
 				case 10:
+					if(controller_PassengerByClass(listaPasajeros, &cantidadPasajerosFirstClass, &cantidadPasajerosExecutive, &cantidadPasajerosEconomyClass)==0)
+					{
+						printf("La cantidad de pasajeros First Class es de: %d\n", cantidadPasajerosFirstClass);
+						printf("La cantidad de pasajeros Executive es de: %d\n", cantidadPasajerosExecutive);
+						printf("La cantidad de pasajeros Economy Class es de: %d\n", cantidadPasajerosEconomyClass);
+					}
+					if(controller_filtrerPassengerByClass(listaPasajeros)==0)
+					{
+						printf("\n\n\n**********************LOS DATOS DE LA LISTA FILTRADA FUERON GUARDADOS CON EXITO**********************\n\n\n");
+					}
+					break;
+				case 11:
 					printf("\n\n\n**********************GRACIAS POR UTILIZAR LA APP UTN LINKEDLIST**********************\n\n\n\n");
 					break;
 			}

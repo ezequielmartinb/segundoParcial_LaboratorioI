@@ -296,5 +296,14 @@ int Passenger_compareByTipoPasajero(void* unPasajero, void* otroPasajero);
 /// 		retorna -1 en caso de que el segundo sea mayor que el primero
 int Passenger_compareByEstadoVuelo(void* unPasajero, void* otroPasajero);
 
+int Passenger_contarPasajerosFirstClass(void* element);
+int Passenger_contarPasajerosExecutive(void* element);
+int Passenger_contarPasajerosEconomyClass(void* element);
+
+int Passenger_filtrarPorPasajeroFirstClass(void* element);
+int Passenger_filtrarPorPasajeroEconomyClass(void* element);
+int Passenger_filtrarPorPasajeroExecutive(void* element);
+
+void Passenger_calcularMillas(void* element);
 
 #endif /* PASSENGER_H_ */
