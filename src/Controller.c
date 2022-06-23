@@ -414,7 +414,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 	return retorno;
 }
 // INFORMES
-int controller_PassengerByClass(LinkedList* pArrayListPassenger, int* cantidadPasajerosFirstClass, int* cantidadPasajerosExecutive, int* cantidadPasajerosEconomyClass)
+int controller_countPassengerByClass(LinkedList* pArrayListPassenger, int* cantidadPasajerosFirstClass, int* cantidadPasajerosExecutive, int* cantidadPasajerosEconomyClass)
 {
 	int retorno=-1;
 

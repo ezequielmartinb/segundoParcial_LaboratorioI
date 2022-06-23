@@ -304,6 +304,6 @@ int Passenger_filtrarPorPasajeroFirstClass(void* element);
 int Passenger_filtrarPorPasajeroEconomyClass(void* element);
 int Passenger_filtrarPorPasajeroExecutive(void* element);
 
-void Passenger_calcularMillas(void* element);
+//void Passenger_calcularMillas(void* element);
 
 #endif /* PASSENGER_H_ */

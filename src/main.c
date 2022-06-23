@@ -33,6 +33,7 @@ int main()
     int cantidadPasajerosFirstClass;
     int cantidadPasajerosExecutive;
     int cantidadPasajerosEconomyClass;
+    int opcionInformesIngresada;
 
 
     banderaGuardarDeDatosTxt=0;
@@ -55,12 +56,12 @@ int main()
 			   "7- Ordenar pasajero\n"
 			   "8- Guardar los datos de los pasajeros en el archivo data.csv (modo texto)\n"
 			   "9- Guardar los datos de los pasajeros en el archivo data.bin (modo binario)\n"
-			   "10-Informes"
+			   "10-Informes\n"
 			   "	1-Pasajeros por clase\n"
 			   "	2-Generar archivo de vuelos\n"
 			   "	3-Calcular millas acumuladas\n"
 			   "11- SALIR \n\n");
-		if(utn_getNumeroEntero(&opcionIngresada, "Ingrese una opcion: ", "ERROR. OPCION INVALIDA. ", 1, 10, 3)==0)
+		if(utn_getNumeroEntero(&opcionIngresada, "Ingrese una opcion: ", "ERROR. OPCION INVALIDA. ", 1, 11, 3)==0)
 		{
 			switch(opcionIngresada)
 			{
@@ -187,15 +188,35 @@ int main()
 					}
 					break;
 				case 10:
-					if(controller_PassengerByClass(listaPasajeros, &cantidadPasajerosFirstClass, &cantidadPasajerosExecutive, &cantidadPasajerosEconomyClass)==0)
+					if(utn_getNumeroEntero(&opcionInformesIngresada, "\n\nSeleccione que informe desea visualizar: \n"
+							"	1-Pasajeros por clase\n"
+							"	2-Generar archivo de vuelos\n"
+							"	3-Calcular millas acumuladas\n"
+							"	4-VOLVER AL MENU ANTERIOR\n\n\n", "ERROR. OPCION INVALIDA.", 1, 4, 3)==0)
 					{
-						printf("La cantidad de pasajeros First Class es de: %d\n", cantidadPasajerosFirstClass);
-						printf("La cantidad de pasajeros Executive es de: %d\n", cantidadPasajerosExecutive);
-						printf("La cantidad de pasajeros Economy Class es de: %d\n", cantidadPasajerosEconomyClass);
-					}
-					if(controller_filtrerPassengerByClass(listaPasajeros)==0)
-					{
-						printf("\n\n\n**********************LOS DATOS DE LA LISTA FILTRADA FUERON GUARDADOS CON EXITO**********************\n\n\n");
+						switch(opcionInformesIngresada)
+						{
+							case 1:
+								if(controller_countPassengerByClass(listaPasajeros, &cantidadPasajerosFirstClass, &cantidadPasajerosExecutive, &cantidadPasajerosEconomyClass)==0)
+								{
+									printf("La cantidad de pasajeros First Class es de: %d\n", cantidadPasajerosFirstClass);
+									printf("La cantidad de pasajeros Executive es de: %d\n", cantidadPasajerosExecutive);
+									printf("La cantidad de pasajeros Economy Class es de: %d\n", cantidadPasajerosEconomyClass);
+								}
+								break;
+							case 2:
+								if(controller_filtrerPassengerByClass(listaPasajeros)==0)
+								{
+									printf("\n\n\n**********************LOS DATOS DE LA LISTA FILTRADA FUERON GUARDADOS CON EXITO**********************\n\n\n");
+								}
+								break;
+							case 3:
+								printf("ACA VA EL LL_MAP\n");
+								break;
+							case 4:
+								printf("VOLVIENDO A MENU ANTERIOR\n");
+								break;
+						}
 					}
 					break;
 				case 11:

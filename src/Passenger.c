@@ -607,9 +607,8 @@ int Passenger_compareByEstadoVuelo(void* unPasajero, void* otroPasajero)
  */
 int Passenger_contarPasajerosFirstClass(void* element)
 {
-	int retorno;
+	int retorno=-1;
 	char auxiliarTipoPasajero[50];
-
 
 	if(element!=NULL)
 	{
@@ -617,6 +616,10 @@ int Passenger_contarPasajerosFirstClass(void* element)
 		if(strcmp(auxiliarTipoPasajero,"FirstClass")==0)
 		{
 			retorno=1;
+		}
+		else
+		{
+			retorno=0;
 		}
 	}
 	return retorno;
@@ -629,9 +632,13 @@ int Passenger_contarPasajerosExecutive(void* element)
 	if(element!=NULL)
 	{
 		Passenger_getTipoPasajero((Passenger*)element, auxiliarTipoPasajero);
-		if(strcmp(auxiliarTipoPasajero,"Executive")==0)
+		if(strcmp(auxiliarTipoPasajero,"ExecutiveClass")==0)
 		{
 			retorno=1;
+		}
+		else
+		{
+			retorno=0;
 		}
 	}
 	return retorno;
@@ -647,6 +654,10 @@ int Passenger_contarPasajerosEconomyClass(void* element)
 		if(strcmp(auxiliarTipoPasajero,"EconomyClass")==0)
 		{
 			retorno=1;
+		}
+		else
+		{
+			retorno=0;
 		}
 	}
 	return retorno;
@@ -698,7 +709,7 @@ int Passenger_filtrarPorPasajeroExecutive(void* element)
 	if(element!=NULL)
 	{
 		Passenger_getTipoPasajero((Passenger*)element, auxiliarTipoPasajero);
-		if(strcmp(auxiliarTipoPasajero,"Executive")==0)
+		if(strcmp(auxiliarTipoPasajero,"ExecutiveClass")==0)
 		{
 			retorno=0;
 		}
@@ -728,7 +739,7 @@ int Passenger_filtrarPorPasajeroExecutive(void* element)
 		{
 			cantidadMillas=(auxiliarPrecio/100)*2;
 		}
-		else if(strcmp(auxiliarTipoPasajero,"Executive")==0)
+		else if(strcmp(auxiliarTipoPasajero,"ExecutiveClass")==0)
 		{
 			cantidadMillas=(auxiliarPrecio/100)*3;
 		}
